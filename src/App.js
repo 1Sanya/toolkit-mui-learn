@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Counter from "./features/counter/Counter";
+import {Link, Route, Routes} from 'react-router-dom'
+import Users from "./features/users/Users";
+import Goods from "./features/goods/Goods";
+import {Container, Grid, MenuItem, MenuList, Paper} from "@mui/material";
+import ClassesShorthand from "./styledComponents/MenuItem/MenuItem";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <>
+            <Container>
+                    <Grid style={{marginBottom: '4vh'}} container spacing={2} xs={12}>
+                        <Grid item>
+                            <Link style={{ textDecoration: 'none' }} to="/users">
+                                <ClassesShorthand name='ssss'>
+                                    Users
+                                </ClassesShorthand>
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link style={{ textDecoration: 'none' }} to="/counter">
+                                <ClassesShorthand name='ssss'>
+                                    Counter
+                                </ClassesShorthand>
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link style={{ textDecoration: 'none' }} to="/">
+                                <ClassesShorthand name='ssss'>
+                                    Goods
+                                </ClassesShorthand>
+                            </Link>
+                        </Grid>
+                    </Grid>
+            </Container>
+            <Routes>
+                <Route path='/users' element={<Users />} />
+                <Route path='/counter' element={<Counter />} />
+                <Route path='/' element={<Goods />} />
+            </Routes>
+        </>
+    );
+};
 
 export default App;
